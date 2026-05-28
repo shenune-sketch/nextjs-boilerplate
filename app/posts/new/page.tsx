@@ -4,17 +4,44 @@ import { PostForm } from "@/components/post-form"
 import { getCurrentUser } from "@/lib/current-user"
 import { createPost } from "@/lib/posts"
 
+type PostFormState = {
+  message: string
+}
+
+const initialState: PostFormState = {
+  message: "",
+}
+
 export default async function NewPostPage() {
   await getCurrentUser()
 
-  async function createPostAction(formData: FormData) {
+  async function createPostAction(
+    _state: PostFormState,
+    formData: FormData
+  ): Promise<PostFormState> {
     "use server"
 
     const title = String(formData.get("title") ?? "")
     const content = String(formData.get("content") ?? "")
-    const post = await createPost({ title, content })
 
-    redirect(`/posts/${post.id}`)
+    try {
+      const post = await createPost({ title, content })
+      redirect(`/posts/${post.id}`)
+    } catch (error) {
+      if (
+        error instanceof Error &&
+        (error.message === "Title is required." ||
+          error.message === "Content is required.")
+      ) {
+        return {
+          message: error.message,
+        }
+      }
+
+      throw error
+    }
+
+    return initialState
   }
 
   return (
