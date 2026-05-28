@@ -1,5 +1,7 @@
 "use client"
 
+import { useFormStatus } from "react-dom"
+
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
@@ -11,6 +13,16 @@ type PostFormProps = {
 
 const fieldClassName =
   "w-full rounded-lg border border-input bg-background px-3 py-2 text-sm shadow-sm transition-colors placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+
+function SubmitButton({ children }: { children: React.ReactNode }) {
+  const { pending } = useFormStatus()
+
+  return (
+    <Button type="submit" disabled={pending}>
+      {children}
+    </Button>
+  )
+}
 
 export function PostForm({
   action,
@@ -62,9 +74,7 @@ export function PostForm({
           ) : null}
 
           <div className="flex justify-end">
-            <Button type="submit">
-              {submitLabel}
-            </Button>
+            <SubmitButton>{submitLabel}</SubmitButton>
           </div>
         </form>
       </CardContent>
