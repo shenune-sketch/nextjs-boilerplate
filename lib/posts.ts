@@ -5,8 +5,45 @@ import { getCurrentUser } from "@/lib/current-user"
 const userPreviewSelect = {
   id: true,
   name: true,
-  email: true,
   image: true,
+} as const
+
+const postListSelect = {
+  id: true,
+  title: true,
+  content: true,
+  createdAt: true,
+  author: {
+    select: userPreviewSelect,
+  },
+  _count: {
+    select: {
+      comments: true,
+    },
+  },
+} as const
+
+const postDetailSelect = {
+  id: true,
+  title: true,
+  content: true,
+  createdAt: true,
+  author: {
+    select: userPreviewSelect,
+  },
+  comments: {
+    orderBy: {
+      createdAt: "asc",
+    },
+    select: {
+      id: true,
+      content: true,
+      createdAt: true,
+      author: {
+        select: userPreviewSelect,
+      },
+    },
+  },
 } as const
 
 export async function listPosts() {
@@ -14,16 +51,7 @@ export async function listPosts() {
     orderBy: {
       createdAt: "desc",
     },
-    include: {
-      author: {
-        select: userPreviewSelect,
-      },
-      _count: {
-        select: {
-          comments: true,
-        },
-      },
-    },
+    select: postListSelect,
   })
 }
 
@@ -32,21 +60,7 @@ export async function getPostById(id: string) {
     where: {
       id,
     },
-    include: {
-      author: {
-        select: userPreviewSelect,
-      },
-      comments: {
-        orderBy: {
-          createdAt: "asc",
-        },
-        include: {
-          author: {
-            select: userPreviewSelect,
-          },
-        },
-      },
-    },
+    select: postDetailSelect,
   })
 }
 
