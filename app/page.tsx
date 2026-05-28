@@ -1,11 +1,12 @@
 import Link from "next/link"
 
+import { auth } from "@/lib/auth"
 import { listPosts } from "@/lib/posts"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 
 export default async function Home() {
   const posts = await listPosts()
-  const session = null // Session management will be added later
+  const session = await auth()
 
   return (
     <main className="min-h-screen bg-clay-canvas">
