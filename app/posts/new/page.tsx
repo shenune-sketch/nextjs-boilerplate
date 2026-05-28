@@ -3,22 +3,19 @@ import { redirect } from "next/navigation"
 import { PostForm } from "@/components/post-form"
 import { getCurrentUser } from "@/lib/current-user"
 import { createPost } from "@/lib/posts"
-
-type PostFormState = {
-  message: string
+type NewPostPageProps = {
+  searchParams: Promise<{ error?: string | string[] }>
 }
 
-const initialState: PostFormState = {
-  message: "",
-}
+export default async function NewPostPage({
+  searchParams,
+}: NewPostPageProps) {
+  const { error } = await searchParams
+  const errorMessage = Array.isArray(error) ? error[0] : error
 
-export default async function NewPostPage() {
   await getCurrentUser()
 
-  async function createPostAction(
-    _state: PostFormState,
-    formData: FormData
-  ): Promise<PostFormState> {
+  async function createPostAction(formData: FormData) {
     "use server"
 
     const title = String(formData.get("title") ?? "")
@@ -33,15 +30,11 @@ export default async function NewPostPage() {
         (error.message === "Title is required." ||
           error.message === "Content is required.")
       ) {
-        return {
-          message: error.message,
-        }
+        redirect(`/posts/new?error=${encodeURIComponent(error.message)}`)
       }
 
       throw error
     }
-
-    return initialState
   }
 
   return (
@@ -58,7 +51,7 @@ export default async function NewPostPage() {
           </p>
         </div>
 
-        <PostForm action={createPostAction} />
+        <PostForm action={createPostAction} errorMessage={errorMessage} />
       </section>
     </main>
   )
