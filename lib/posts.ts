@@ -37,6 +37,7 @@ const postDetailSelect = {
     },
     select: {
       id: true,
+      authorId: true,
       content: true,
       createdAt: true,
       author: {
