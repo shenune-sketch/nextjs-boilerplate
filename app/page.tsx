@@ -1,13 +1,11 @@
 import Link from "next/link"
 
-import { auth, signOut } from "@/lib/auth"
 import { listPosts } from "@/lib/posts"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { PostCard } from "@/components/post-card"
 
 export default async function Home() {
-  const [session, posts] = await Promise.all([auth(), listPosts()])
+  const posts = await listPosts()
+  const session = null // Session management will be added later
 
   return (
     <main className="min-h-screen bg-clay-canvas">
@@ -28,16 +26,6 @@ export default async function Home() {
                 >
                   New post
                 </Link>
-                <form
-                  action={async () => {
-                    "use server"
-                    await signOut({ redirectTo: "/" })
-                  }}
-                >
-                  <Button type="submit" variant="outline" size="sm">
-                    Sign out
-                  </Button>
-                </form>
               </>
             ) : (
               <Link
