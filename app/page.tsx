@@ -23,7 +23,7 @@ export default async function Home() {
               </h1>
               <p className="max-w-2xl text-sm text-muted-foreground sm:text-base">
                 Browse the latest conversations, see how many comments each post
-                has, and jump straight into writing when you're signed in.
+                has, and jump straight into writing when you&apos;re signed in.
               </p>
             </div>
           </div>
