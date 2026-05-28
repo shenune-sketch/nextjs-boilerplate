@@ -1,3 +1,4 @@
+import { revalidatePath } from "next/cache"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
@@ -136,6 +137,8 @@ export default async function PostDetailPage({
       await deleteComment(commentId)
     } catch (error) {
       if (error instanceof Error && error.message === "Comment not found.") {
+        revalidatePath("/")
+        revalidatePath(`/posts/${postId}`)
         return
       }
 
