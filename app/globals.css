@@ -37,151 +37,101 @@
   --color-popover: var(--popover);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
-  --radius-sm: calc(var(--radius) * 0.6);
-  --radius-md: calc(var(--radius) * 0.8);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) * 1.4);
-  --radius-2xl: calc(var(--radius) * 1.8);
-  --radius-3xl: calc(var(--radius) * 2.2);
-  --radius-4xl: calc(var(--radius) * 2.6);
+  --radius-xs: calc(var(--radius) * 0.5);
+  --radius-sm: calc(var(--radius) * 0.67);
+  --radius-md: calc(var(--radius) * 1);
+  --radius-lg: calc(var(--radius) * 1.33);
+  --radius-xl: calc(var(--radius) * 2);
+  --radius-2xl: calc(var(--radius) * 2.67);
 
   /* Clay brand colors */
-  --color-clay-cream: var(--clay-cream);
-  --color-clay-black: var(--clay-black);
-  --color-clay-blue: var(--clay-blue);
-  --color-clay-green: var(--clay-green);
-  --color-clay-orange: var(--clay-orange);
+  --color-clay-canvas: var(--clay-canvas);
+  --color-clay-ink: var(--clay-ink);
   --color-clay-pink: var(--clay-pink);
-  --color-clay-purple: var(--clay-purple);
+  --color-clay-teal: var(--clay-teal);
+  --color-clay-lavender: var(--clay-lavender);
+  --color-clay-peach: var(--clay-peach);
+  --color-clay-ochre: var(--clay-ochre);
+  --color-clay-mint: var(--clay-mint);
+  --color-clay-coral: var(--clay-coral);
+  --color-clay-surface-soft: var(--clay-surface-soft);
+  --color-clay-surface-card: var(--clay-surface-card);
+  --color-clay-surface-strong: var(--clay-surface-strong);
+  --color-clay-hairline: var(--clay-hairline);
 }
 
 :root {
-  /* Clay Canvas - warm cream tint */
+  /* Clay Canvas - warm cream tint (#fffaf0) */
   --background: #fffaf0;
-  --foreground: #1a1a1a;
+  --foreground: #0a0a0a;
 
-  /* Clay brand palette */
-  --clay-cream: #fffaf0;
-  --clay-black: #1a1a1a;
-  --clay-blue: #4169e1;
-  --clay-green: #22c55e;
-  --clay-orange: #f97316;
-  --clay-pink: #ec4899;
-  --clay-purple: #8b5cf6;
+  /* Clay Primary Brand Colors */
+  --clay-canvas: #fffaf0;
+  --clay-ink: #0a0a0a;
+  --clay-pink: #ff4d8b;
+  --clay-teal: #1a3a3a;
+  --clay-lavender: #b8a4ed;
+  --clay-peach: #ffb084;
+  --clay-ochre: #e8b94a;
+  --clay-mint: #a4d4c5;
+  --clay-coral: #ff6b5a;
+
+  /* Clay Surface Colors */
+  --clay-surface-soft: #faf5e8;
+  --clay-surface-card: #f5f0e0;
+  --clay-surface-strong: #ebe6d6;
+  --clay-surface-dark: #0a1a1a;
+  --clay-hairline: #e5e5e5;
 
   /* Surface colors - warm tinted */
   --card: #ffffff;
-  --card-foreground: #1a1a1a;
+  --card-foreground: #0a0a0a;
   --popover: #ffffff;
-  --popover-foreground: #1a1a1a;
+  --popover-foreground: #0a0a0a;
 
-  /* Primary - Clay blue */
-  --primary: #4169e1;
+  /* Primary - Clay near-black */
+  --primary: #0a0a0a;
   --primary-foreground: #ffffff;
 
-  /* Secondary - soft warm gray */
-  --secondary: #f5f0e8;
-  --secondary-foreground: #1a1a1a;
+  /* Secondary - soft warm cream */
+  --secondary: #faf5e8;
+  --secondary-foreground: #0a0a0a;
 
-  /* Muted - cream tinted */
-  --muted: #f5f0e8;
-  --muted-foreground: #6b6b6b;
+  /* Muted - warm grays */
+  --muted: #6a6a6a;
+  --muted-foreground: #9a9a9a;
 
-  /* Accent - Clay orange */
-  --accent: #f97316;
+  /* Accent - Clay coral */
+  --accent: #ff6b5a;
   --accent-foreground: #ffffff;
 
   /* Destructive */
   --destructive: #ef4444;
 
   /* Borders - subtle warm */
-  --border: #e8e0d5;
-  --input: #e8e0d5;
-  --ring: #4169e1;
+  --border: #e5e5e5;
+  --input: #e5e5e5;
+  --ring: #0a0a0a;
 
   /* Chart colors using Clay palette */
-  --chart-1: #4169e1;
-  --chart-2: #22c55e;
-  --chart-3: #f97316;
-  --chart-4: #ec4899;
-  --chart-5: #8b5cf6;
+  --chart-1: #ff4d8b;
+  --chart-2: #1a3a3a;
+  --chart-3: #b8a4ed;
+  --chart-4: #ffb084;
+  --chart-5: #e8b94a;
 
-  /* Radius - Clay uses generous rounding */
+  /* Radius - Clay uses generous rounding (12px base) */
   --radius: 0.75rem;
 
   /* Sidebar */
   --sidebar: #fffaf0;
-  --sidebar-foreground: #1a1a1a;
-  --sidebar-primary: #4169e1;
+  --sidebar-foreground: #0a0a0a;
+  --sidebar-primary: #0a0a0a;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #f5f0e8;
-  --sidebar-accent-foreground: #1a1a1a;
-  --sidebar-border: #e8e0d5;
-  --sidebar-ring: #4169e1;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    /* Dark mode - deep warm black */
-    --background: #1a1a1a;
-    --foreground: #fafaf9;
-
-    /* Clay brand palette stays the same */
-    --clay-cream: #fffaf0;
-    --clay-black: #1a1a1a;
-    --clay-blue: #6b8cff;
-    --clay-green: #4ade80;
-    --clay-orange: #fb923c;
-    --clay-pink: #f472b6;
-    --clay-purple: #a78bfa;
-
-    /* Surface colors - elevated dark */
-    --card: #262626;
-    --card-foreground: #fafaf9;
-    --popover: #262626;
-    --popover-foreground: #fafaf9;
-
-    /* Primary - brighter blue for dark mode */
-    --primary: #6b8cff;
-    --primary-foreground: #1a1a1a;
-
-    /* Secondary */
-    --secondary: #2a2a2a;
-    --secondary-foreground: #fafaf9;
-
-    /* Muted */
-    --muted: #2a2a2a;
-    --muted-foreground: #a1a1a1;
-
-    /* Accent - brighter orange */
-    --accent: #fb923c;
-    --accent-foreground: #1a1a1a;
-
-    /* Destructive */
-    --destructive: #f87171;
-
-    /* Borders */
-    --border: #3a3a3a;
-    --input: #3a3a3a;
-    --ring: #6b8cff;
-
-    /* Chart colors - brighter for dark mode */
-    --chart-1: #6b8cff;
-    --chart-2: #4ade80;
-    --chart-3: #fb923c;
-    --chart-4: #f472b6;
-    --chart-5: #a78bfa;
-
-    /* Sidebar */
-    --sidebar: #1a1a1a;
-    --sidebar-foreground: #fafaf9;
-    --sidebar-primary: #6b8cff;
-    --sidebar-primary-foreground: #1a1a1a;
-    --sidebar-accent: #2a2a2a;
-    --sidebar-accent-foreground: #fafaf9;
-    --sidebar-border: #3a3a3a;
-    --sidebar-ring: #6b8cff;
-  }
+  --sidebar-accent: #faf5e8;
+  --sidebar-accent-foreground: #0a0a0a;
+  --sidebar-border: #e5e5e5;
+  --sidebar-ring: #0a0a0a;
 }
 
 @layer base {
@@ -195,29 +145,38 @@
     @apply font-sans;
   }
 
-  /* Clay typography - Inter with medium weight for headlines */
+  /* Clay typography - Inter at weight 500-600 for headlines */
   h1, h2, h3, h4, h5, h6 {
-    @apply font-medium tracking-tight;
+    @apply font-medium text-clay-ink;
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl leading-tight;
+    @apply text-5xl md:text-6xl lg:text-7xl leading-tight -tracking-[0.025em];
   }
 
   h2 {
-    @apply text-3xl md:text-4xl leading-tight;
+    @apply text-4xl md:text-5xl leading-tight -tracking-[0.02em];
   }
 
   h3 {
-    @apply text-2xl md:text-3xl leading-snug;
+    @apply text-2xl md:text-3xl leading-snug -tracking-[0.01em];
   }
 
   h4 {
     @apply text-xl md:text-2xl leading-snug;
   }
 
+  p {
+    @apply text-base leading-relaxed text-clay-ink;
+  }
+
   /* Clay smooth transitions */
   a, button {
     @apply transition-colors duration-200;
+  }
+
+  /* Hairline borders */
+  input, textarea, select {
+    @apply border border-clay-hairline focus:border-clay-ink;
   }
 }
