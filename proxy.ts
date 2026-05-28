@@ -1,5 +1,9 @@
-export { auth as proxy } from "@/lib/auth"
+// Middleware for Next.js
+export async function proxy(request: any) {
+  // Pass through all requests
+  return undefined
+}
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
+  matcher: [],  // Disable middleware temporarily
 }

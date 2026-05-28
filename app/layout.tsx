@@ -1,6 +1,6 @@
 // app/layout.tsx
 import type { Metadata } from "next"
-import { Inter, Geist_Mono } from "next/font/google"
+import { Inter } from "next/font/google"
 import "./globals.css"
 
 const inter = Inter({
@@ -9,14 +9,10 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 })
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-})
-
 export const metadata: Metadata = {
-  title: "Next.js Boilerplate",
-  description: "Next.js 16 · Tailwind CSS v4 · shadcn/ui · Auth.js · Prisma · Neon",
+  title: "Community Board - Share Ideas & Connect",
+  description:
+    "Join our thriving community platform. Share your thoughts, connect with others, and be part of the conversation.",
 }
 
 export default function RootLayout({
@@ -25,12 +21,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className="bg-background">
-      <body
-        className={`${inter.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
+    <html lang="en" className="bg-clay-canvas scroll-smooth">
+      <body className={`${inter.variable} antialiased`}>{children}</body>
     </html>
   )
 }
