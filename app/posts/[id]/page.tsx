@@ -131,7 +131,16 @@ export default async function PostDetailPage({
     "use server"
 
     const commentId = String(formData.get("commentId") ?? "")
-    await deleteComment(commentId)
+
+    try {
+      await deleteComment(commentId)
+    } catch (error) {
+      if (error instanceof Error && error.message === "Comment not found.") {
+        return
+      }
+
+      throw error
+    }
   }
 
   return (
