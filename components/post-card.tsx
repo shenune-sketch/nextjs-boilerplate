@@ -39,9 +39,9 @@ export function PostCard({ post }: PostCardProps) {
   return (
     <Link
       href={`/posts/${post.id}`}
-      className="group block rounded-xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+      className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
     >
-      <Card className="h-full transition-colors group-hover:bg-muted/40">
+      <Card className="h-full transition-all duration-200 group-hover:bg-secondary group-hover:shadow-lg">
         <CardHeader>
           <CardTitle className="text-balance">{post.title}</CardTitle>
           <p className="text-sm text-muted-foreground">
